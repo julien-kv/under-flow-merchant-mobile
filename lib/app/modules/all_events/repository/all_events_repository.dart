@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:merchant_app/app/common/api/response_getter.dart';
 
 import '../../../common/api/api_client.dart';
 import '../../../common/models/event.dart';
