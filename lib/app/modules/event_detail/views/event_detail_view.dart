@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/qr_scan_controller.dart';
+import '../controllers/event_detail_controller.dart';
 
-class QrScanView extends GetView<QrScanController> {
+class EventDetailView extends GetView<EventDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('EventDetailView'),
+        centerTitle: true,
+      ),
       body: Center(
         child: Text(
-          'QrScanView is working',
+          'EventDetailView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

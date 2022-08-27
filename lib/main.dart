@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:merchant_app/app/modules/home/bindings/home_binding.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:device_preview/device_preview.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
             getPages: AppPages.routes,
             locale: DevicePreview.locale(context),
             defaultTransition: Transition.fadeIn,
-            initialRoute: AppPages.INITIAL,
+            initialRoute: Routes.AUTH_PRE_CHECK,
             builder: (context, child) {
               return OKToast(
                 child: BaseWidget(

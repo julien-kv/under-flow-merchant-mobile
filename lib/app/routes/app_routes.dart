@@ -5,12 +5,16 @@ abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
   static const ALL_EVENTS = _Paths.ALL_EVENTS;
-  static const QR_SCAN = _Paths.QR_SCAN;
+  static const SCANNER_VIEW = _Paths.SCANNER_VIEW;
+  static const EVENT_DETAIL = _Paths.EVENT_DETAIL;
+  static const AUTH_PRE_CHECK = _Paths.AUTH_PRE_CHECK;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const ALL_EVENTS = '/all-events';
-  static const QR_SCAN = '/qr-scan';
+  static const SCANNER_VIEW = '/scanner-view';
+  static const EVENT_DETAIL = '/event-detail';
+  static const AUTH_PRE_CHECK = '/auth-pre-check';
 }

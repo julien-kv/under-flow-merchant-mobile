@@ -8,6 +8,7 @@ environment:
 dependencies:
   connectivity_plus: ^2.3.0
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
   device_preview: ^1.0.0
   dio: ^4.0.6
   flutter:
@@ -21,7 +22,10 @@ dependencies:
   get_storage: ^2.0.3
   intl: ^0.17.0
   oktoast: ^3.1.5
-  qr_flutter: ^4.0.0
+  optimized_cached_image: ^3.0.1
+  pull_to_refresh: ^2.0.0
+  qr_code_scanner: ^1.0.1
+  vibration: ^1.7.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0

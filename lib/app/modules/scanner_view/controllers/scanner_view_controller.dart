@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class QrScanController extends GetxController {
-  //TODO: Implement QrScanController
+class ScannerViewController extends GetxController {
+  //TODO: Implement ScannerViewController
 
   final count = 0.obs;
   @override
