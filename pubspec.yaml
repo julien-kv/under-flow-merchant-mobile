@@ -16,6 +16,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   flutter_local_notifications: ^9.4.0
   flutter_screenutil: ^5.4.0+1
+  flutter_svg: ^1.1.4
   get: 4.6.5
   get_storage: ^2.0.3
   intl: ^0.17.0
@@ -34,3 +35,13 @@ flutter:
     - assets/images/
     - assets/icons/
     - .env
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: fonts/Manrope-Regular.ttf
+        - asset: fonts/Manrope-SemiBold.ttf
+        - asset: fonts/Manrope-Bold.ttf
+        - asset: fonts/Manrope-ExtraBold.ttf
+        - asset: fonts/Manrope-ExtraLight.ttf
+        - asset: fonts/Manrope-Light.ttf
+        - asset: fonts/Manrope-Medium.ttf

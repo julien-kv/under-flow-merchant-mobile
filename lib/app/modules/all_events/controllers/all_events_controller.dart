@@ -1,15 +1,12 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+class AllEventsController extends GetxController {
+  //TODO: Implement AllEventsController
+
   final count = 0.obs;
-  final selectedIndex = 0.obs;
   @override
   void onInit() {
     super.onInit();
-  }
-
-  void onBottomNavBarPressed(int index) {
-    selectedIndex.value = index;
   }
 
   @override

@@ -4,9 +4,13 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
+  static const ALL_EVENTS = _Paths.ALL_EVENTS;
+  static const QR_SCAN = _Paths.QR_SCAN;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
+  static const ALL_EVENTS = '/all-events';
+  static const QR_SCAN = '/qr-scan';
 }
