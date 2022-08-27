@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 import '../../../common/values/app_colors.dart';
@@ -81,9 +82,10 @@ class EventDetailView extends GetView<EventDetailController> {
                       height: 10.h,
                     ),
                     IconAndText(
-                      icon: Icons.calendar_month_outlined,
-                      text: controller.event.value.datetime,
-                    ),
+                        icon: Icons.calendar_month_outlined,
+                        text: parseDate(
+                          controller.event.value.datetime,
+                        )),
                     SizedBox(
                       height: 10.h,
                     ),
@@ -112,6 +114,13 @@ class EventDetailView extends GetView<EventDetailController> {
             ],
           )),
     );
+  }
+
+  String parseDate(String datetext) {
+    DateTime tempDate = DateTime.parse(datetext);
+    String date = DateFormat('EEE d MMM y').format(tempDate);
+    String date2 = DateFormat('jm').format(tempDate);
+    return "$date at $date2";
   }
 }
 

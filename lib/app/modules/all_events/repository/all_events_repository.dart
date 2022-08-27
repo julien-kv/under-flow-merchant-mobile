@@ -1,10 +1,13 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:merchant_app/app/common/api/response_getter.dart';
 
 import '../../../common/api/api_client.dart';
-import '../../../common/models/events.dart';
+import '../../../common/models/event.dart';
 import '../../../common/service/network_service.dart';
 import '../../../common/values/strings.dart';
+import 'package:http/http.dart' as http;
 
 class AllEventsRepository {
   static final AllEventsRepository instance = AllEventsRepository._();
@@ -15,10 +18,13 @@ class AllEventsRepository {
   Future<Either<String, List<Event>>> getEvents() async {
     List<Event> eventList = <Event>[];
     try {
-      final apiResponse =
-          await api.get(uri: "http://192.168.1.218:1337/events");
-      if (apiResponse.isNotEmpty) {
-        final events = apiResponse as List<dynamic>;
+      // final apiResponse =
+      //     await api.get(uri: "http://192.168.1.218:1337/events");
+      final response =
+          await http.get(Uri.parse("http://192.168.1.218:1337/events"));
+
+      if (response.statusCode == 200) {
+        final events = jsonDecode(response.body) as List<dynamic>;
         eventList = events.map((event) {
           return Event.fromMap(event);
         }).toList();
