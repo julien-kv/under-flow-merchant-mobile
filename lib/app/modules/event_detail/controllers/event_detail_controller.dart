@@ -1,11 +1,17 @@
 import 'package:get/get.dart';
 
-class EventDetailController extends GetxController {
-  //TODO: Implement EventDetailController
+import '../../../common/models/event.dart';
 
-  final count = 0.obs;
+class EventDetailController extends GetxController {
+  late Rx<Event> event = Event.emptyInitialization().obs;
+  final RxBool isFromAllEventsPage = false.obs;
+
   @override
   void onInit() {
+    if (Get.arguments != null) {
+      isFromAllEventsPage.value = true;
+      event.value = Get.arguments["event"];
+    }
     super.onInit();
   }
 
@@ -16,5 +22,7 @@ class EventDetailController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+  void onTapBack() {
+    Get.back();
+  }
 }

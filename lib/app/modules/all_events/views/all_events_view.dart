@@ -35,7 +35,7 @@ class AllEventsView extends GetView<AllEventsController> {
                     : ListView.separated(
                         padding: EdgeInsets.symmetric(horizontal: 5.w),
                         itemBuilder: ((context, index) => EventCard(
-                            id: controller.eventsList[index].merchantId,
+                            id: controller.eventsList[index].id,
                             onTapEvent: controller.onTapEvent,
                             backgroundImageUrl:
                                 controller.eventsList[index].imageUrl ?? "",

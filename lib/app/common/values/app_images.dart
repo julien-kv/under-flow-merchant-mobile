@@ -9,4 +9,5 @@ class AppImages {
   static const String placeholderImage = 'assets/images/fallback.png';
   static const String fallbackLogo = 'assets/images/fallback.png';
   static const String noPostAvaialableV2 = 'assets/images/fallback.png';
+  static const String bitcoin = "assets/images/bitcoin.svg";
 }

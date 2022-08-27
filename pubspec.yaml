@@ -20,6 +20,7 @@ dependencies:
   flutter_svg: ^1.1.4
   get: 4.6.5
   get_storage: ^2.0.3
+  http: ^0.13.5
   intl: ^0.17.0
   oktoast: ^3.1.5
   optimized_cached_image: ^3.0.1

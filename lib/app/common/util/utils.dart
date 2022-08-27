@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,6 +51,24 @@ class Utils {
           ),
         ),
       );
+  static String getRandomString(
+    int length, {
+    bool isNumber = true,
+  }) {
+    final _chars = isNumber ? '1234567890' : 'abcdefghijklmnopqrstuvwxyz';
+    final _rnd = Random();
+
+    return String.fromCharCodes(
+      Iterable.generate(
+        length,
+        (_) => _chars.codeUnitAt(
+          _rnd.nextInt(
+            _chars.length,
+          ),
+        ),
+      ),
+    );
+  }
 
   static void showIconDialog(
     String title,

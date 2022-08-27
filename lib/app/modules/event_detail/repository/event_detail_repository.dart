@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:merchant_app/app/common/models/events.dart';
+import 'package:merchant_app/app/common/models/event.dart';
 
 import '../../../common/api/api_client.dart';
 import '../../../common/service/network_service.dart';

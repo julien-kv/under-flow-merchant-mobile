@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kv.hackathon.merchant_app">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="merchant_app"
         android:name="${applicationName}"

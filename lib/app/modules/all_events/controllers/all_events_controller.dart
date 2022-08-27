@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
-import 'package:merchant_app/app/common/models/events.dart';
+import 'package:merchant_app/app/common/models/event.dart';
 import 'package:merchant_app/app/modules/all_events/repository/all_events_repository.dart';
+
+import '../../../routes/app_pages.dart';
 
 class AllEventsController extends GetxController {
   final RxBool _isLoading = false.obs;
@@ -34,6 +36,7 @@ class AllEventsController extends GetxController {
 
   Future<void> getEvents() async {
     isLoading = true;
+
     final Either<String, List<Event>> result =
         await AllEventsRepository.instance.getEvents();
     result.fold((exception) {
@@ -52,13 +55,13 @@ class AllEventsController extends GetxController {
     await getEvents();
   }
 
-  void onTapEvent(String id) {
-    // Get.toNamed(
-    //   Routes.PROFILE,
-    //   arguments: {
-    //     "empId": id,
-    //     "profileViewedSource": ProfileViewedSource.EMPLOYEE_LIST
-    //   },
-    // );
+  void onTapEvent(id) {
+    final event = eventsList.firstWhere((element) => element.id == id);
+    Get.toNamed(
+      Routes.EVENT_DETAIL,
+      arguments: {
+        "event": event,
+      },
+    );
   }
 }
