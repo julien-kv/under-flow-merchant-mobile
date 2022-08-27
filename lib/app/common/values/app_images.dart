@@ -6,5 +6,7 @@ class AppImages {
   static const String noNetworkLogo = 'assets/images/no_network.png';
   static const String eventIcon = 'assets/icons/party.svg';
   static const String qr = 'assets/icons/qr.svg';
-  static const String placeholderImage = 'assets/images/no_network.png';
+  static const String placeholderImage = 'assets/images/fallback.png';
+  static const String fallbackLogo = 'assets/images/fallback.png';
+  static const String noPostAvaialableV2 = 'assets/images/fallback.png';
 }

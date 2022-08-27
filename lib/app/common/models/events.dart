@@ -74,7 +74,7 @@ class Event {
       cryptoPrice: map['cryptoPrice'] as String,
       datetime: map['datetime'] as String,
       capacity: map['capacity'].toInt(),
-      merchantId: map['MerchantId'] as String,
+      merchantId: map['merchantId'] as String,
       location: map['location'] as String,
       contractAddress:
           map['contractAddress'] == "" ? null : map['contractAddress'],

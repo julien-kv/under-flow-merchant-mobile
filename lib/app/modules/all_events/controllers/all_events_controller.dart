@@ -39,10 +39,13 @@ class AllEventsController extends GetxController {
     result.fold((exception) {
       isEventsSuccess = false;
     }, (events) {
-      eventsList.clear();
+      if (eventsList.isNotEmpty) {
+        eventsList.clear();
+      }
       eventsList.addAll(events);
       isEventsSuccess = true;
     });
+    isLoading = false;
   }
 
   Future<void> onRefresh() async {

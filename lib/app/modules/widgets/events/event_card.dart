@@ -76,7 +76,7 @@ class EventCard extends StatelessWidget {
                           height: 345,
                           width: 345,
                         ),
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
