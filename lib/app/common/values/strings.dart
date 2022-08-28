@@ -7,7 +7,7 @@ class Strings {
       'Connection timeout. Please try again after some time.';
   static const noConnection = 'No connection. Please turn on your internet!';
   static const unauthorize = 'Unauthorize. Please login again!';
-  static const String appName = 'BMS';
+  static const String appName = 'SpotLight';
   static const String ok = 'Ok';
   static const String error = 'Error';
   static const String noInternet = 'No internet. Please try again later.';
