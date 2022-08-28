@@ -15,22 +15,28 @@ class IconAndText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Icon(
-          icon,
-          color: AppColors.steelBlue,
-          size: 28,
-        ),
-        SizedBox(
-          width: 10.h,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: Dimens.fontSize16,
-            fontWeight: FontWeight.w400,
-          ),
+        Row(
+          children: [
+            Icon(
+              icon,
+              color: AppColors.steelBlue,
+              size: 28,
+            ),
+            SizedBox(
+              width: 10.h,
+            ),
+            Expanded(
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: Dimens.fontSize16,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

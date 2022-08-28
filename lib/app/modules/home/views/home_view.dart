@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:merchant_app/app/modules/all_events/controllers/all_events_controller.dart';
 import 'package:merchant_app/app/modules/all_events/views/all_events_view.dart';
-import 'package:merchant_app/app/modules/scanner_view/controllers/scanner_view_controller.dart';
-import 'package:merchant_app/app/modules/scanner_view/views/scanner_view.dart';
 import 'package:merchant_app/app/modules/widgets/common/custom_bottom_navigation_bar.dart';
 
 import '../../../common/values/strings.dart';
+import '../../scanner_view/views/scanner_view_view.dart';
 import '../../widgets/appbar/custom_appbar_widget.dart';
 import '../controllers/home_controller.dart';
 

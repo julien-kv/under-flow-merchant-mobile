@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:merchant_app/app/routes/app_pages.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:vibration/vibration.dart';
 
@@ -64,14 +65,15 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
   Future<void> _onQRViewCreated(QRViewController controller) async {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) async {
+      controller.pauseCamera();
       if (await Vibration.hasVibrator() != null) {
-        await Future.delayed(Duration(milliseconds: 500));
         Vibration.vibrate();
-        setState(() {
-          result = scanData;
-        });
-        return;
       }
+      await Get.toNamed(
+        Routes.EVENT_DETAIL,
+        arguments: {"scanData": scanData.code},
+      );
+      controller.resumeCamera();
     });
   }
 

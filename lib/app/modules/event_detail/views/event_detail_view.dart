@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:merchant_app/app/modules/widgets/common/loading_indicator.dart';
 import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 import '../../../common/values/app_colors.dart';
@@ -21,98 +22,102 @@ class EventDetailView extends GetView<EventDetailController> {
             backgroundColor: Colors.black38,
           ),
           extendBodyBehindAppBar: true,
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              OptimizedCacheImage(
-                memCacheHeight: 800.h.toInt(),
-                memCacheWidth: 800.w.toInt(),
-                maxHeightDiskCache: 800.h.toInt(),
-                maxWidthDiskCache: 800.w.toInt(),
-                imageUrl: controller.event.value.imageUrl ?? "",
-                imageBuilder: (context, imageProvider) => Ink(
-                  width: Get.width,
-                  height: 400.h,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: imageProvider,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-                errorWidget: (context, url, error) {
-                  OptimizedCacheImage.evictFromCache(url);
-                  return Ink(
-                    width: 345,
-                    height: 345,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: ResizeImage(
-                          AssetImage(
-                            AppImages.placeholderImage,
+          body: Obx(() {
+            return controller.isLoading
+                ? LoadingIndicator()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      OptimizedCacheImage(
+                        memCacheHeight: 800.h.toInt(),
+                        memCacheWidth: 800.w.toInt(),
+                        maxHeightDiskCache: 800.h.toInt(),
+                        maxWidthDiskCache: 800.w.toInt(),
+                        imageUrl: controller.event.value.imageUrl ?? "",
+                        imageBuilder: (context, imageProvider) => Ink(
+                          width: Get.width,
+                          height: 400.h,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.fill,
+                            ),
                           ),
-                          height: 345,
-                          width: 345,
                         ),
-                        fit: BoxFit.fill,
+                        errorWidget: (context, url, error) {
+                          OptimizedCacheImage.evictFromCache(url);
+                          return Ink(
+                            width: 345,
+                            height: 345,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: ResizeImage(
+                                  AssetImage(
+                                    AppImages.placeholderImage,
+                                  ),
+                                  height: 345,
+                                  width: 345,
+                                ),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Text(
+                              controller.event.value.title,
+                              style: TextStyle(
+                                  fontSize: Dimens.fontSize22,
+                                  fontWeight: FontWeight.w900,
+                                  color: Color(0xff222222)),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            IconAndText(
+                                icon: Icons.calendar_month_outlined,
+                                text: parseDate(
+                                  controller.event.value.datetime,
+                                )),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            IconAndText(
+                              icon: Icons.location_on_outlined,
+                              text: controller.event.value.location,
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Divider(
+                              thickness: 2,
+                              color: const Color(0xFF989898).withOpacity(0.1),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            if (!controller.isFromAllEventsPage.value)
+                              BookingDetails(
+                                noOfTickets: controller.ticketQuantity.value,
+                                walletAddress: controller.walletAddress ?? "",
+                              ),
+                          ],
+                        ),
                       ),
-                    ),
+                    ],
                   );
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Text(
-                      controller.event.value.title,
-                      style: TextStyle(
-                          fontSize: Dimens.fontSize22,
-                          fontWeight: FontWeight.w900,
-                          color: Color(0xff222222)),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    IconAndText(
-                        icon: Icons.calendar_month_outlined,
-                        text: parseDate(
-                          controller.event.value.datetime,
-                        )),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    IconAndText(
-                      icon: Icons.location_on_outlined,
-                      text: controller.event.value.location,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Divider(
-                      thickness: 2,
-                      color: const Color(0xFF989898).withOpacity(0.1),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    if (!controller.isFromAllEventsPage.value)
-                      BookingDetails(
-                        noOfTickets: 3,
-                        walletAddress: "3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5",
-                      ),
-                  ],
-                ),
-              ),
-            ],
-          )),
+          })),
     );
   }
 

@@ -9,7 +9,7 @@ import '../modules/event_detail/views/event_detail_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/scanner_view/bindings/scanner_view_binding.dart';
-import '../modules/scanner_view/views/scanner_view.dart';
+import '../modules/scanner_view/views/scanner_view_view.dart';
 
 part 'app_routes.dart';
 
