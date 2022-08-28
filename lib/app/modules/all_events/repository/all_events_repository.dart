@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:merchant_app/app/common/constants/config.dart';
 
 import '../../../common/api/api_client.dart';
 import '../../../common/models/event.dart';
@@ -17,10 +18,8 @@ class AllEventsRepository {
   Future<Either<String, List<Event>>> getEvents() async {
     List<Event> eventList = <Event>[];
     try {
-      // final apiResponse =
-      //     await api.get(uri: "http://192.168.1.218:1337/events");
-      final response =
-          await http.get(Uri.parse("http://192.168.1.218:1337/events"));
+      final url = "${Config.baseUrl}/events";
+      final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
         final events = jsonDecode(response.body) as List<dynamic>;

@@ -5,6 +5,7 @@ import 'package:merchant_app/app/common/models/event.dart';
 import 'package:merchant_app/app/common/models/userEventTicket.dart';
 
 import '../../../common/api/api_client.dart';
+import '../../../common/constants/config.dart';
 import '../../../common/service/network_service.dart';
 import '../../../common/values/strings.dart';
 
@@ -21,19 +22,10 @@ class EventDetailrepository {
       String contractAddress, String walletAddress) async {
     UserEventTicket userEventTicket = UserEventTicket.empty();
     try {
-      var endpointUrl = 'http://192.168.1.218:1337/checkqr';
-      Map<String, String> queryParams = {
-        'contractAddress': contractAddress,
-        'walletAddress': walletAddress
-      };
-
-      //String queryString = Uri.parse(queryParameters: queryParams).query;
-
+      var endpointUrl = '${Config.baseUrl}/checkqr';
       var requestUrl =
           '$endpointUrl?contractAddress=$contractAddress&walletAddress=$walletAddress';
       var response = await http.get(Uri.parse(requestUrl));
-      // final response =
-      //     await http.get(Uri.parse("http://192.168.1.218:1337/events"));
 
       if (response.statusCode == 200) {
         final eventTicket = jsonDecode(response.body);
